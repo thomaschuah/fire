@@ -3,19 +3,46 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+
+  state = {
+    username:"",
+    currentItem:""
+  };
+
+  changeUserName = (event) => {
+    this.setState({username: event.currentTarget.value});
+  };
+
+  changeCurrentItem = (event) => {
+    this.setState({currentItem: event.currentTarget.value});
+  };
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+      <div className='app'>
+        <header>
+            <div className='wrapper'>
+              <h1>Fun Food Friends</h1>
+              
+            </div>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <div className='container'>
+          <section className='add-item'>
+              <form>
+                <input type="text" name="username" value={this.state.username} onChange={this.changeUserName} placeholder="What's your name?" />
+                <input type="text" name="currentItem" value={this.state.currentItem} onChange={this.changeCurrentItem} placeholder="What are you bringing?" />
+                <button>Add Item</button>
+              </form>
+          </section>
+          <section className='display-item'>
+            <div className='wrapper'>
+              <ul>
+              </ul>
+            </div>
+          </section>
+        </div>
       </div>
     );
   }
 }
-
 export default App;
